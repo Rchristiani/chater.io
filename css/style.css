@@ -7,6 +7,34 @@ body {
 	margin: 0;
 	font-family: Arial, sans-serif;
 }
+header,
+footer {
+	color: #fff;
+	background: #4B649C;
+}
+header {
+	height: 65px;
+	padding: 15px;
+}
+header h1 {
+	margin: 0;
+}
+footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	font-size: 12px;
+	height: 35px;
+}
+footer p {
+	text-align: right;
+	padding-right: 25px;
+}
+footer a,
+footer a:visited {
+	color: #fff;
+}
 .connected p {
 	color: #1EE820;
 }
@@ -21,16 +49,16 @@ body {
 }
 .chat-window {
 	position: absolute;
-	top: 0;
+	top: 65px;
 	left: 0;
 	right: 0;
-	bottom: 50px;
-	padding: 1%;
+	bottom: 85px;
+	padding: 0 1%;
 	overflow: scroll;
 }
 .message-bar {
 	position: absolute;
-	bottom: 0px;
+	bottom: 35px;
 	left: 0;
 	right: 0;
 }
@@ -50,5 +78,5 @@ body {
 	border: none;
 	font-size: 20px;
 	color: #071114;
-	background: #58FF68;
+	background: #62DB56;
 }

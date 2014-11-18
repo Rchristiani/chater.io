@@ -1,7 +1,8 @@
 var chat = {};
 
-chat.socket = io.connect('http://localhost/');
-//Extend the Backbone events to  our socket
+chat.socket = io.connect(window.location.origin);
+
+chat.userName = '';
 
 chat.chatWindow = Backbone.View.extend({
 	el: '.chat-window',
@@ -9,8 +10,11 @@ chat.chatWindow = Backbone.View.extend({
 	disconnectTemplate: _.template($('#disconnect-template').html()),
 	connectedTemplate: _.template($('#connected-template').html()),
 	initialize: function() {
+		this.setUserName();
+	},
+	createConnection: function() {
 		var self = this;
-		chat.socket.emit('connected', {time: new Date(), message: "User connected"});
+		chat.socket.emit('connected', {time: new Date(), message: chat.userName + " connected"});
 		chat.socket.on('newMessage', function(data) {
 			self.renderMessage(data);
 		});
@@ -20,6 +24,11 @@ chat.chatWindow = Backbone.View.extend({
 		chat.socket.on('userDisconnect', function(data) {
 			self.userDisconnect(data);
 		});
+	},
+	setUserName: function() {
+		chat.userName = prompt("Enter User Name: ");
+		this.createConnection();
+		return this;
 	},
 	renderMessage: function(message) {
 		this.appendMessage(message, this.messageTemplate);
@@ -33,6 +42,7 @@ chat.chatWindow = Backbone.View.extend({
 	appendMessage: function(message, template) {
 		momentTime = moment(message.time,[moment.ISO_8601]);
 		message.time = momentTime;
+		this.$el[0].scrollTop = this.$el[0].scrollHeight + 10000;
 		this.$el.append(template(message));
 	}
 });
@@ -58,8 +68,9 @@ chat.messageBar = Backbone.View.extend({
 			$input.focus();
 		}
 		else {
-			message.time = new Date();
 			message.message = $input.val();
+			message.time = new Date();
+			message.userName = chat.userName;
 			$input.val('');
 			chat.socket.emit('message', message);
 		}

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Chater</title>
+	<title>chater.io</title>
 	<link rel="stylesheet" href="css/style.css">
 	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -21,7 +21,7 @@
 	</script>
 	<script id="message-template" type="text/template">
 		<div class="message">
-			<p><time><% print(time.format('h:mm')); %></time>: <% print( window.emojiParser(message, 'imgs/emojis') ) %></p>
+			<p><%= userName %> <time><% print(time.format('h:mm')); %></time>: <% print( window.emojiParser(message, 'imgs/emojis') ) %></p>
 		</div>
 	</script>
 	<script id="disconnect-template" type="text/template">
@@ -36,12 +36,14 @@
 	</script>
 </head>
 <body>
-	<div class="chat-window">
-		
-	</div>
-	<div class="message-bar">
-		
-	</div>
+	<header>
+		<h1>chater.io</h1>
+	</header>
+	<div class="chat-window"></div>
+	<div class="message-bar"></div>
+	<footer>
+		<p>Made with &#x2764; <a href="http://ryanchristiani.com">Ryan Christiani</a></p>
+	</footer>
 	<script src="js/chat.js"></script>
 </body>
 </html>
