@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Chater</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="js/vendor/moment.js"></script>
+	<script src="js/vendor/underscore.js"></script>
+	<script src="js/vendor/backbone.js"></script>
+	<script src="js/vendor/emoji.js"></script>
+	<!--View Templates-->
+	<script id="message-bar" type="text/template">
+		<div class="message-bar-container">
+			<form>
+				<input type="text">
+				<input type="submit">
+			</form>
+		</div>
+	</script>
+	<script id="message-template" type="text/template">
+		<div class="message">
+			<p><time><% print(time.format('h:mm')); %></time>: <% print( window.emojiParser(message, 'imgs/emojis') ) %></p>
+		</div>
+	</script>
+	<script id="disconnect-template" type="text/template">
+		<div class="disconnect">
+			<p><time><% print(time.format('h:mm')); %></time>: <%= message %></p>
+		</div>
+	</script>
+	<script id="connected-template" type="text/template">
+		<div class="connected">
+			<p><time><% print(time.format('h:mm')); %></time>: <%= message %></p>
+		</div>
+	</script>
+</head>
+<body>
+	<div class="chat-window">
+		
+	</div>
+	<div class="message-bar">
+		
+	</div>
+	<script src="js/chat.js"></script>
+</body>
+</html>
