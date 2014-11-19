@@ -42,8 +42,8 @@ chat.chatWindow = Backbone.View.extend({
 	appendMessage: function(message, template) {
 		momentTime = moment(message.time,[moment.ISO_8601]);
 		message.time = momentTime;
-		this.$el[0].scrollTop = this.$el[0].scrollHeight + 10000;
 		this.$el.append(template(message));
+		this.$el[0].scrollTop = this.$el[0].scrollHeight;
 	}
 });
 //Message Bar 

@@ -18,5 +18,5 @@ io.of('/').on('connection', function(socket) {
 
 app.use(express.static('./'));
 
-server.listen(4000);
+server.listen(80);
 
