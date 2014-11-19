@@ -1,6 +1,6 @@
 var chat = {};
 
-chat.socket = io.connect(window.location.origin);
+chat.socket = io.connect(document.location.origin + ':4000');
 
 chat.userName = '';
 
