@@ -1,8 +1,34 @@
 var chat = {};
 
-chat.socket = io.connect(document.location.origin + ':4000');
+chat.siteUrl = (function() {
+	var url = document.location.origin.split(':');
+	if(url[2] === '4000') {
+		return document.location.origin + ':4000';
+	}
+	else {
+		return document.location.origin;
+	}
+});
+
+chat.socket = io.connect(chat.siteUrl);
 
 chat.userName = '';
+
+chat.router = Backbone.Router.extend({
+	initialize: function() {
+		Backbone.history.start();
+		var header = new chat.header();
+		var messageBar = new chat.messageBar();
+		var chatWindow = new chat.chatWindow();
+	},
+	routes: {
+		'about' : 'about'
+	},
+	about: function() {
+		console.log('About');
+	}
+});
+
 
 chat.chatWindow = Backbone.View.extend({
 	el: '.chat-window',
@@ -77,6 +103,17 @@ chat.messageBar = Backbone.View.extend({
 	}
 });
 
+chat.header = Backbone.View.extend({
+	el: '.main-header',
+	template: _.template($('#header-template').html()),
+	initialize: function() {
+		this.render();
+	},
+	render: function() {
+		this.$el.html(this.template);
+	}
+});
+
 chat.events = function() {
 	$(window).on('unload', function() {
 		var message = {};
@@ -87,8 +124,7 @@ chat.events = function() {
 };
 
 chat.init = function() {
-	var messageBar = new chat.messageBar();
-	var chatWindow = new chat.chatWindow();
+	var router = new chat.router();	
 	chat.events();
 };
 

@@ -5,7 +5,8 @@
 }
 body {
 	margin: 0;
-	font-family: Arial, sans-serif;
+	font-family: 'Roboto', sans-serif;
+	color: #545252;
 }
 header,
 footer {
@@ -18,6 +19,28 @@ header {
 }
 header h1 {
 	margin: 0;
+	display: inline-block;
+	line-height: 1;
+}
+header .info {
+	float: right;
+	display: block;
+	height: 35px;
+	width: 35px;
+	border-radius: 50%;
+	background: rgba(255,255,255,0.7);
+	transition: all 0.5s ease;
+	text-align: center;
+	font-size: 25px;
+}
+header .info,
+header .info:visited {
+	color: #071114;
+	text-decoration: none;
+	font-weight: 700;
+}
+header .info:hover {
+	background: rgba(255,255,255,1.0);
 }
 footer {
 	position: absolute;
@@ -36,7 +59,7 @@ footer a:visited {
 	color: #fff;
 }
 .connected p {
-	color: #1EE820;
+	color: #66B867;
 }
 .disconnect p {
 	color: #aaa;
@@ -46,6 +69,12 @@ footer a:visited {
 	position: relative;
 	top: 5px;
 	display: inline-block;
+}
+.message time,
+.connected time,
+.disconnted time {
+	font-size: 14px;
+	font-style: italic;
 }
 .chat-window {
 	position: absolute;
