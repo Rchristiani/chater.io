@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>chater.io</title>
+	<link rel="shortcut icon" href="favicon.png" type="image/x-icon">
 	<link href='http://fonts.googleapis.com/css?family=Roboto:400,700' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="css/style.css">
 	<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
@@ -39,8 +41,35 @@
 		<h1>chater.io</h1>
 		<a href="#/about" class="info">?</a>
 	</script>
+	<script id="login-template" type="text/template">
+		<div class="login-container center simple-shadow">
+			<form class="login-form">
+				<label>Enter a username: </label>
+				<input type="text" name="username" />
+				<input type="submit" value="Lets Go!" />
+			</form>
+		</div>
+	</script>
+	<script id="about-container" type="text/template">
+		<div class="about-container center simple-shadow">
+			<a href="#" class="close-btn">
+				<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" x="0px" y="0px" width="100px" height="100px" viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
+					<g id="Close">
+						<circle fill="none" stroke="#000000" stroke-width="6" stroke-miterlimit="10" cx="50" cy="50" r="47"/>
+						<line fill="none" stroke="#000000" stroke-width="6" stroke-miterlimit="10" x1="71.214" y1="71.213" x2="28.787" y2="28.787"/>
+						<line fill="none" stroke="#000000" stroke-width="6" stroke-miterlimit="10" x1="28.787" y1="71.213" x2="71.214" y2="28.787"/>
+					</g>
+				</svg>
+			</a>
+			<h1>chater.io</h1>
+			<p>chater.io is a simple chat app made for spontaneous communicate.</p>
+			<p>Have fun chatting with people from all around the world. Icons from <a href="http://thenounproject.com/" target="_blank">The Noun Project</a></p>
+			<h3>Tip's</h3>
+			<p>You can use emoji's using the <code>:smile:</code> pattern. A cheatsheet can be found <a href="http://www.emoji-cheat-sheet.com/" target="_blank">here.</p>
+		</div>
+	</script>
 </head>
-<body>
+<body class="show-login">
 	<header class="main-header">
 	</header>
 	<div class="chat-window"></div>
@@ -48,6 +77,9 @@
 	<footer>
 		<p>Made with &#x2764; <a href="http://ryanchristiani.com">Ryan Christiani</a></p>
 	</footer>
+	<div class="overlay">
+		
+	</div>
 	<script src="js/chat.js"></script>
 </body>
 </html>
